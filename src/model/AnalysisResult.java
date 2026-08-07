@@ -6,7 +6,16 @@ public class AnalysisResult {
     private int lineCount;
     private Map<Character, Integer> characterFrequency;
 
-
+    public AnalysisResult(int characterCount,
+        int wordCount,
+        int lineCount,
+        Map<Character, Integer> characterFrequency
+    ){
+        this.characterCount = characterCount;
+        this.wordCount = wordCount;
+        this.lineCount = lineCount;
+        this.characterFrequency = Map.copyOf(characterFrequency);
+    }
     //=====================GETTERS===================
     public int getCharacterCount() {
         return characterCount;
@@ -21,7 +30,7 @@ public class AnalysisResult {
     }
 
     public Map<Character, Integer> getCharacterFrequency() {
-        return characterFrequency;
+        return Map.copyOf(characterFrequency);
     }
 
     //======================SETTERS====================

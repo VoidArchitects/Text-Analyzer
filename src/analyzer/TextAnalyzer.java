@@ -7,18 +7,17 @@ import java.util.Map;
 public class TextAnalyzer {
     
     public AnalysisResult analyze(String text) {
-        AnalysisResult result = new AnalysisResult();
-        result.setCharacterCount(countCharacters(text));
-        result.setWordCount(countWords(text));
-        result.setLineCount(countLines(text));
-        result.setCharacterFrequency(countCharacterFrequency(text));
-        return result;
+        return new AnalysisResult(
+            countCharacters(text),
+            countWords(text),
+            countLines(text),
+            countCharacterFrequency(text)
+        );
     }
 
     //=====helpers======
 
     private int countCharacters(String text){
-        if(text.isBlank()) return 0;
         return text.length();
     }
     private int countWords(String text){
