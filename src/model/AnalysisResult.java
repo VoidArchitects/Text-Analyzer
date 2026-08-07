@@ -9,6 +9,7 @@ public class AnalysisResult {
     private int whiteSpaceCount;
     private int symbolCount;
     private Map<Character, Integer> characterFrequency;
+    private Map<String, Integer> wordFrequency;
 
     public AnalysisResult(int characterCount,
         int wordCount,
@@ -17,7 +18,8 @@ public class AnalysisResult {
         int digitCount,
         int whiteSpaceCount,
         int symbolCount,
-        Map<Character, Integer> characterFrequency
+        Map<Character, Integer> characterFrequency,
+        Map<String, Integer> wordFrequency
     ){
         this.characterCount = characterCount;
         this.wordCount = wordCount;
@@ -27,6 +29,7 @@ public class AnalysisResult {
         this.whiteSpaceCount = whiteSpaceCount;
         this.symbolCount = symbolCount;
         this.characterFrequency = Map.copyOf(characterFrequency);
+        this.wordFrequency = Map.copyOf(wordFrequency);
     }
     //=====================GETTERS===================
     public int getCharacterCount() {
@@ -59,7 +62,10 @@ public class AnalysisResult {
     public Map<Character, Integer> getCharacterFrequency() {
         return Map.copyOf(characterFrequency);
     }
-
+    
+    public Map<String, Integer> getWordsFrequency() {
+        return Map.copyOf(wordFrequency);
+    }
     //======================SETTERS====================
     public void setCharacterCount(int characterCount) {
         this.characterCount = characterCount;
@@ -89,5 +95,9 @@ public class AnalysisResult {
 
     public void setCharacterFrequency(Map<Character, Integer> characterFrequency) {
         this.characterFrequency = characterFrequency;
+    }
+
+    public void setWordFrequency(Map<String, Integer> wordFrequency) {
+        this.wordFrequency = wordFrequency;
     }
 }   

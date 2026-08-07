@@ -15,7 +15,8 @@ public class TextAnalyzer {
             countDigits(text),
             countWhitespaces(text),
             countSymbols(text),
-            countCharacterFrequency(text)
+            countCharacterFrequency(text),
+            countWordFrequency(text)
         );
     }
 
@@ -73,11 +74,21 @@ public class TextAnalyzer {
     private Map<Character, Integer> countCharacterFrequency(String text){
         if(text.isBlank()) return new HashMap<>();
         text = text.toLowerCase();
-        Map<Character,Integer> frequency = new HashMap<>();
+        Map<Character,Integer> characterFrequency = new HashMap<>();
         for (char ch : text.toCharArray()) {
-            frequency.put(ch, frequency.getOrDefault(ch, 0) + 1);
+            characterFrequency.put(ch, characterFrequency.getOrDefault(ch, 0) + 1);
         }
-        return frequency;
+        return characterFrequency;
+    }
+    private Map<String, Integer> countWordFrequency(String text){
+        if(text.isBlank()) return new HashMap<>();
+        text = text.toLowerCase().replaceAll("[^\\p{L}\\p{N}]"," ");
+        Map<String,Integer> wordFrequency = new HashMap<>();
+        String[] words = text.split("\\s+");
+        for(String word : words){
+            wordFrequency.put(word, wordFrequency.getOrDefault(word, 0) + 1);
+        }
+        return wordFrequency;
     }
 
     private boolean isJavaSymbol(char ch) {
