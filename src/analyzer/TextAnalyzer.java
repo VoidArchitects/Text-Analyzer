@@ -11,6 +11,10 @@ public class TextAnalyzer {
             countCharacters(text),
             countWords(text),
             countLines(text),
+            countLetters(text),
+            countDigits(text),
+            countWhitespaces(text),
+            countSymbols(text),
             countCharacterFrequency(text)
         );
     }
@@ -32,6 +36,40 @@ public class TextAnalyzer {
         }
         return lineCount;
     }
+    private int countLetters(String text){
+        if(text.isBlank()) return 0;
+        int letterCount = 0;
+        for(int i = 0 ; i < text.length() ; i++){
+            if(Character.isLetter(text.charAt(i))) letterCount++;
+        }
+        return letterCount;
+    }
+    private int countDigits(String text){
+        if(text.isBlank()) return 0;
+        int digitCount = 0;
+        for(int i = 0 ; i < text.length() ; i++){
+            if(Character.isDigit(text.charAt(i))) digitCount++;
+        }
+        return digitCount;
+    }
+    private int countWhitespaces(String text){
+        if(text.isBlank()) return 0;
+        int whiteSpaceCount = 0;
+        for(int i = 0 ; i < text.length() ; i++){
+            if(Character.isWhitespace(text.charAt(i))) whiteSpaceCount++;
+        }
+        return whiteSpaceCount;
+    }
+    private int countSymbols(String text){
+        if(text.isBlank()) return 0;
+        int symbolCount = 0;
+        for (int i = 0; i < text.length(); i++) {
+        if (isJavaSymbol(text.charAt(i))) {
+            symbolCount++;
+        }
+    }
+        return symbolCount;
+    }
     private Map<Character, Integer> countCharacterFrequency(String text){
         if(text.isBlank()) return new HashMap<>();
         text = text.toLowerCase();
@@ -40,5 +78,13 @@ public class TextAnalyzer {
             frequency.put(ch, frequency.getOrDefault(ch, 0) + 1);
         }
         return frequency;
+    }
+
+    private boolean isJavaSymbol(char ch) {
+        int type = Character.getType(ch);
+        return type == Character.MATH_SYMBOL || 
+            type == Character.CURRENCY_SYMBOL || 
+            type == Character.MODIFIER_SYMBOL || 
+            type == Character.OTHER_SYMBOL;
     }
 }
