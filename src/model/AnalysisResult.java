@@ -1,4 +1,6 @@
 package model;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 public class AnalysisResult {
     private int characterCount;
@@ -34,8 +36,10 @@ public class AnalysisResult {
         this.symbolCount = symbolCount;
         this.characterFrequency = Map.copyOf(characterFrequency);
         this.wordFrequency = Map.copyOf(wordFrequency);
-        this.topKCharacterFrequency = Map.copyOf(topKCharacterFrequency);
-        this.topKWordFrequency = Map.copyOf(topKWordFrequency);
+        this.topKCharacterFrequency =
+            Collections.unmodifiableMap(new LinkedHashMap<>(topKCharacterFrequency));
+        this.topKWordFrequency =
+            Collections.unmodifiableMap(new LinkedHashMap<>(topKWordFrequency));
     }
     //=====================GETTERS===================
     public int getCharacterCount() {
@@ -70,7 +74,7 @@ public class AnalysisResult {
     }
 
     public Map<Character, Integer> getTopKCharacterFrequency() {
-        return Map.copyOf(topKCharacterFrequency);
+        return (topKCharacterFrequency);
     }
     
     public Map<String, Integer> getWordsFrequency() {
@@ -78,7 +82,7 @@ public class AnalysisResult {
     }
 
     public Map<String, Integer> getTopKWordsFrequency() {
-        return Map.copyOf(topKWordFrequency);
+        return (topKWordFrequency);
     }
     //======================SETTERS====================
     public void setCharacterCount(int characterCount) {
