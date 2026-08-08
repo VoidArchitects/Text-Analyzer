@@ -10,6 +10,8 @@ public class AnalysisResult {
     private int symbolCount;
     private Map<Character, Integer> characterFrequency;
     private Map<String, Integer> wordFrequency;
+    private Map<Character, Integer> topKCharacterFrequency;
+    private Map<String, Integer> topKWordFrequency;
 
     public AnalysisResult(int characterCount,
         int wordCount,
@@ -19,7 +21,9 @@ public class AnalysisResult {
         int whiteSpaceCount,
         int symbolCount,
         Map<Character, Integer> characterFrequency,
-        Map<String, Integer> wordFrequency
+        Map<String, Integer> wordFrequency,
+        Map<Character, Integer> topKCharacterFrequency,
+        Map<String, Integer> topKWordFrequency
     ){
         this.characterCount = characterCount;
         this.wordCount = wordCount;
@@ -30,6 +34,8 @@ public class AnalysisResult {
         this.symbolCount = symbolCount;
         this.characterFrequency = Map.copyOf(characterFrequency);
         this.wordFrequency = Map.copyOf(wordFrequency);
+        this.topKCharacterFrequency = Map.copyOf(topKCharacterFrequency);
+        this.topKWordFrequency = Map.copyOf(topKWordFrequency);
     }
     //=====================GETTERS===================
     public int getCharacterCount() {
@@ -62,9 +68,17 @@ public class AnalysisResult {
     public Map<Character, Integer> getCharacterFrequency() {
         return Map.copyOf(characterFrequency);
     }
+
+    public Map<Character, Integer> getTopKCharacterFrequency() {
+        return Map.copyOf(topKCharacterFrequency);
+    }
     
     public Map<String, Integer> getWordsFrequency() {
         return Map.copyOf(wordFrequency);
+    }
+
+    public Map<String, Integer> getTopKWordsFrequency() {
+        return Map.copyOf(topKWordFrequency);
     }
     //======================SETTERS====================
     public void setCharacterCount(int characterCount) {
@@ -97,7 +111,15 @@ public class AnalysisResult {
         this.characterFrequency = characterFrequency;
     }
 
+    public void setTopKCharacterFrequency(Map<Character, Integer> topKCharacterFrequency) {
+        this.topKCharacterFrequency = topKCharacterFrequency;
+    }
+
     public void setWordFrequency(Map<String, Integer> wordFrequency) {
         this.wordFrequency = wordFrequency;
+    }
+
+    public void setTopKWordFrequency(Map<String, Integer> topKWordFrequency) {
+        this.topKWordFrequency = topKWordFrequency;
     }
 }   

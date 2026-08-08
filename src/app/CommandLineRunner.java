@@ -15,8 +15,10 @@ public class CommandLineRunner {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter file path: ");
         String path = sc.nextLine();
+        System.out.print("Enter top k ");
+        int k = sc.nextInt();
         try{
-            AnalysisResult result = analyzer.analyze(reader.read(path));
+            AnalysisResult result = analyzer.analyze(reader.read(path), k);
             reporter.generate(result);
 
         }catch(IOException e){

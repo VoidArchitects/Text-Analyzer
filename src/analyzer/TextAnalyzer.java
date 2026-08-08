@@ -1,12 +1,15 @@
 package analyzer;
 import model.AnalysisResult;
 
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class TextAnalyzer {
     
-    public AnalysisResult analyze(String text) {
+    public AnalysisResult analyze(String text, int k) {
         return new AnalysisResult(
             countCharacters(text),
             countWords(text),
@@ -16,7 +19,9 @@ public class TextAnalyzer {
             countWhitespaces(text),
             countSymbols(text),
             countCharacterFrequency(text),
-            countWordFrequency(text)
+            countWordFrequency(text),
+            topKCharacters(countCharacterFrequency(text), k),
+            topKWords(countWordFrequency(text), k)
         );
     }
 
@@ -89,6 +94,20 @@ public class TextAnalyzer {
             wordFrequency.put(word, wordFrequency.getOrDefault(word, 0) + 1);
         }
         return wordFrequency;
+    }
+    private Map<String, Integer> topKWords(Map<String, Integer> map, int k){
+        if(map.isEmpty() || k <= 0) return new LinkedHashMap<>();
+        return map.entrySet().stream()
+        .sorted(Comparator.comparing(Map.Entry<String, Integer> :: getValue).reversed().thenComparing(Map.Entry<String, Integer> :: getKey))
+        .limit(k)
+        .collect(Collectors.toMap(Map.Entry :: getKey, Map.Entry :: getValue, (a,b) -> a, LinkedHashMap :: new));
+    }
+    private Map<Character, Integer> topKCharacters(Map<Character, Integer> map, int k){
+        if(map.isEmpty() || k <= 0) return new LinkedHashMap<>();
+        return map.entrySet().stream()
+        .sorted(Comparator.comparing(Map.Entry<Character, Integer> :: getValue).reversed().thenComparing(Map.Entry<Character, Integer> :: getKey))
+        .limit(k)
+        .collect(Collectors.toMap(Map.Entry :: getKey, Map.Entry :: getValue, (a,b) -> a, LinkedHashMap :: new));
     }
 
     private boolean isJavaSymbol(char ch) {
