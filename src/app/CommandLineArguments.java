@@ -2,16 +2,18 @@ package app;
 public class CommandLineArguments {
     private String path;
     private int k;
+    private boolean ignoreCase;
 
-    public CommandLineArguments(String path, int k) {
+    public CommandLineArguments(String path, int k, boolean ignoreCase) {
     this.path = path;
     this.k = k;
+    this.ignoreCase = ignoreCase;
     }
 
     public static CommandLineArguments parse(String[] args){
         if(args.length < 3){
             throw new IllegalArgumentException(
-                "Usage: <file-path> --top <number>"
+                "Usage: <file-path> --top <number> --ignore-case"
             );
         }
         String path = args[0];
@@ -28,7 +30,11 @@ public class CommandLineArguments {
                 "k should be a natural number, i.e, 1,2,3,4........."
             );
         }
-        return new CommandLineArguments(path, k);
+        boolean localIgnoreCase = false;
+        if(args.length > 3 &&  args[3].equalsIgnoreCase("--ignore-case")){
+            localIgnoreCase = true;
+        }
+        return new CommandLineArguments(path, k, localIgnoreCase);
     }
 
     public String getPath(){
@@ -37,5 +43,9 @@ public class CommandLineArguments {
 
     public int getK(){
         return k;
+    }
+
+    public boolean getIgnoreCase(){
+        return ignoreCase;
     }
 }

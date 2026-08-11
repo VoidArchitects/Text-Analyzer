@@ -18,4 +18,4 @@ if ($LASTEXITCODE -ne 0) {
 
 Write-Host "Running Text Analyzer..." -ForegroundColor Green
 
-java -cp out app.Main test-files/sample.txt --top 5
+java -cp out app.Main test-files/sample.txt --top 5 --ignore-case

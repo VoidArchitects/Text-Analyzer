@@ -8,8 +8,9 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class TextAnalyzer {
-    
-    public AnalysisResult analyze(String text, int k) {
+    private boolean ignoreCase;
+    public AnalysisResult analyze(String text, int k, boolean ignoreCase) {
+        this.ignoreCase = ignoreCase;
         return new AnalysisResult(
             countCharacters(text),
             countWords(text),
@@ -78,7 +79,7 @@ public class TextAnalyzer {
     }
     private Map<Character, Integer> countCharacterFrequency(String text){
         if(text.isBlank()) return new HashMap<>();
-        text = text.toLowerCase();
+        if(ignoreCase) text = text.toLowerCase();
         Map<Character,Integer> characterFrequency = new HashMap<>();
         for (char ch : text.toCharArray()) {
             characterFrequency.put(ch, characterFrequency.getOrDefault(ch, 0) + 1);
@@ -87,7 +88,8 @@ public class TextAnalyzer {
     }
     private Map<String, Integer> countWordFrequency(String text){
         if(text.isBlank()) return new HashMap<>();
-        text = text.toLowerCase().replaceAll("[^\\p{L}\\p{N}]"," ");
+        if(ignoreCase) text = text.toLowerCase();
+        text = text.replaceAll("[^\\p{L}\\p{N}]"," ");
         Map<String,Integer> wordFrequency = new HashMap<>();
         String[] words = text.split("\\s+");
         for(String word : words){
