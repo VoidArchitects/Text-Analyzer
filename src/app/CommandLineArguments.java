@@ -1,44 +1,64 @@
 package app;
+import java.util.ArrayList;
+import java.util.List;
+import java.nio.file.Path;
 public class CommandLineArguments {
-    private String path;
+    private List<Path> paths;
     private int k;
     private boolean ignoreCase;
 
-    public CommandLineArguments(String path, int k, boolean ignoreCase) {
-    this.path = path;
-    this.k = k;
-    this.ignoreCase = ignoreCase;
+    public CommandLineArguments(List<Path> paths, int k, boolean ignoreCase) {
+        this.paths = paths;
+        this.k = k;
+        this.ignoreCase = ignoreCase;
+    }
+    public CommandLineArguments(List<Path> paths, boolean ignoreCase) {
+        this.paths = paths;
+        this.ignoreCase = ignoreCase;
+        this.k = Integer.MAX_VALUE;
     }
 
     public static CommandLineArguments parse(String[] args){
-        if(args.length < 3){
-            throw new IllegalArgumentException(
-                "Usage: <file-path> --top <number> --ignore-case"
-            );
-        }
-        String path = args[0];
-        String option = args[1];
-        if(!"--top".equals(option)) throw new IllegalArgumentException("Expected --top");
-        int k;
-        try{
-            k = Integer.parseInt(args[2]);
-        }catch(NumberFormatException e){
-            throw new IllegalArgumentException("Top k must be a number");
-        }
-        if(k<=0){
-            throw new IllegalArgumentException(
-                "k should be a natural number, i.e, 1,2,3,4........."
-            );
-        }
+        int k = Integer.MAX_VALUE;
+        boolean topFlagFound = false;
         boolean localIgnoreCase = false;
-        if(args.length > 3 &&  args[3].equalsIgnoreCase("--ignore-case")){
-            localIgnoreCase = true;
+        List<Path> pathList = new ArrayList<>();
+        for(int i = 0 ; i < args.length ; i++){
+            switch (args[i]){
+                case "--top" -> {
+                    if(i+1 >= args.length){
+                        throw new IllegalArgumentException("Buddy wheres k? --top what?");
+                    }
+                    try{
+                        k = Integer.parseInt(args[++i]);
+                    }catch(Exception e){
+                        throw new IllegalArgumentException("k should be a valid integer");
+                    }
+                    if(k <= 0){
+                        throw new IllegalArgumentException("k should be positive bruh");
+                    }
+                    topFlagFound = true;
+                }
+                case "--ignore-case" -> {
+                    localIgnoreCase = true;    
+                }
+                default -> {
+                    if(args[i].startsWith("-")){
+                        throw new IllegalArgumentException("File path buddy?");
+                    }
+                    pathList.add(Path.of(args[i]));   
+                }
+            }
         }
-        return new CommandLineArguments(path, k, localIgnoreCase);
+        if(pathList.isEmpty()) throw new IllegalArgumentException("File path is missing");
+        if(topFlagFound && k != Integer.MAX_VALUE){
+            return new CommandLineArguments(pathList, k, localIgnoreCase);
+        }
+        return new CommandLineArguments(pathList, localIgnoreCase);
     }
 
-    public String getPath(){
-        return path;
+    public List<Path> getPath(){
+        return paths;
     }
 
     public int getK(){

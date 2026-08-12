@@ -41,6 +41,26 @@ public class AnalysisResult {
         this.topKWordFrequency =
             Collections.unmodifiableMap(new LinkedHashMap<>(topKWordFrequency));
     }
+    public AnalysisResult(int characterCount,
+        int wordCount,
+        int lineCount,
+        int letterCount,
+        int digitCount,
+        int whiteSpaceCount,
+        int symbolCount,
+        Map<Character, Integer> characterFrequency,
+        Map<String, Integer> wordFrequency
+    ){
+        this.characterCount = characterCount;
+        this.wordCount = wordCount;
+        this.lineCount = lineCount;
+        this.letterCount = letterCount;
+        this.digitCount = digitCount;
+        this.whiteSpaceCount = whiteSpaceCount;
+        this.symbolCount = symbolCount;
+        this.characterFrequency = Map.copyOf(characterFrequency);
+        this.wordFrequency = Map.copyOf(wordFrequency);
+    }
     //=====================GETTERS===================
     public int getCharacterCount() {
         return characterCount;

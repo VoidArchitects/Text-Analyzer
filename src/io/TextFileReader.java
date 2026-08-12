@@ -5,8 +5,7 @@ import java.nio.file.Path;
 
 public class TextFileReader {
 
-    public String read(String path) throws IOException{
-        Path filePath = Path.of(path);
+    public String read(Path filePath) throws IOException{
         return Files.readString(filePath);
     }
 }

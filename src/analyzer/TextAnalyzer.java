@@ -25,6 +25,20 @@ public class TextAnalyzer {
             topKWords(countWordFrequency(text), k)
         );
     }
+    public AnalysisResult analyze(String text, boolean ignoreCase) {
+        this.ignoreCase = ignoreCase;
+        return new AnalysisResult(
+            countCharacters(text),
+            countWords(text),
+            countLines(text),
+            countLetters(text),
+            countDigits(text),
+            countWhitespaces(text),
+            countSymbols(text),
+            countCharacterFrequency(text),
+            countWordFrequency(text)
+        );
+    }
 
     //=====helpers======
 
@@ -33,7 +47,7 @@ public class TextAnalyzer {
     }
     private int countWords(String text){
         if(text.isBlank()) return 0;
-        return (text.split("\\s+").length);
+        return (text.trim().split("\\s+").length);
     }
     private int countLines(String text){
         if(text.isBlank()) return 0;
@@ -93,6 +107,7 @@ public class TextAnalyzer {
         Map<String,Integer> wordFrequency = new HashMap<>();
         String[] words = text.split("\\s+");
         for(String word : words){
+            if(word.isEmpty()) continue;
             wordFrequency.put(word, wordFrequency.getOrDefault(word, 0) + 1);
         }
         return wordFrequency;
