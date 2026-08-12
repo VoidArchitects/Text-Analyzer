@@ -1,4 +1,1 @@
-Hello, world! Welcome to the Text Analyzer CLI tool.
-This tool processes text files and extracts useful statistics.
-It can count words, lines, characters, and much more.
-Happy coding and analyzing!
+Hello World! Welcome to Text Analyzer CLI sample test file.

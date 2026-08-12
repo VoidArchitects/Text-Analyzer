@@ -1,0 +1,41 @@
+# Large Text File for Performance and Stress Testing
+
+Paragraph 1:
+The Text Analyzer CLI is designed to analyze raw text input efficiently. Text analysis tools provide useful metrics such as word count, line count, character count, sentence count, paragraph count, average word length, and word frequency analysis. When processing large files, memory usage and processing speed become critical performance indicators.
+
+Paragraph 2:
+Data analysis in computer science relies heavily on string manipulation algorithms. From pattern matching with regular expressions to building suffix trees and hash maps for frequency counting, text processing algorithms form the foundation of search engines, compilers, natural language processors, and command-line utilities.
+
+Paragraph 3:
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Paragraph 4:
+Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris. Integer in mauris eu nibh euismod gravida. Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam sit amet orci. Eget eros sodales scelerisque. Mauris mollis tincidunt felis. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
+
+Paragraph 5:
+Numerical test section inside large dataset:
+Row 1: item_id=1001, count=450, ratio=0.85, status=PASS
+Row 2: item_id=1002, count=890, ratio=0.92, status=PASS
+Row 3: item_id=1003, count=120, ratio=0.45, status=WARN
+Row 4: item_id=1004, count=3040, ratio=0.99, status=PASS
+Row 5: item_id=1005, count=0, ratio=0.00, status=FAIL
+
+Paragraph 6:
+Repeating test sequence for scale verification:
+- Alpha Bravo Charlie Delta Echo Foxtrot Golf Hotel India Juliet Kilo Lima Mike
+- November Oscar Papa Quebec Romeo Sierra Tango Uniform Victor Whiskey Xray Yankee Zulu
+- 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+- Apple Banana Cherry Date Elderberry Fig Grape Honeydew Kiwi Lemon Mango Nectarine Orange Papaya Quince Raspberry Strawberry Tomato Ugni Vanilla Watermelon Yuzu Zucchini
+
+Paragraph 7:
+System logs simulation:
+[2026-08-12 13:20:00.100] [INFO] [Main] Initializing Text Analyzer CLI service...
+[2026-08-12 13:20:00.150] [INFO] [FileLoader] Reading file: test-data/large.txt
+[2026-08-12 13:20:00.220] [INFO] [TextAnalyzer] Tokenizing text stream...
+[2026-08-12 13:20:00.310] [INFO] [TextAnalyzer] Calculating frequency dictionary...
+[2026-08-12 13:20:00.400] [INFO] [AnalysisResult] Formatting output metrics...
+[2026-08-12 13:20:00.450] [INFO] [Main] Execution completed successfully in 350ms.
+
+Paragraph 8:
+Final verification block:
+End of large file payload. All lines loaded cleanly.

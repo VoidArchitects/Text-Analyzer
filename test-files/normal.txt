@@ -1,0 +1,5 @@
+The quick brown fox jumps over the lazy dog. This classic pangram contains every letter of the English alphabet at least once.
+
+Text analysis is a fundamental process in software engineering and natural language processing. It involves examining textual data to extract meaningful metrics, patterns, and insights.
+
+Common text processing tasks include counting words, lines, and characters, as well as finding frequency distributions and searching for specific key terms. A reliable analyzer should handle regular prose smoothly and produce accurate results.

@@ -19,8 +19,8 @@ public class TextAnalyzer {
             countDigits(text),
             countWhitespaces(text),
             countSymbols(text),
-            countCharacterFrequency(text),
-            countWordFrequency(text),
+            sortCharacterFrequency(countCharacterFrequency(text)),
+            sortWordFrequency(countWordFrequency(text)),
             topKCharacters(countCharacterFrequency(text), k),
             topKWords(countWordFrequency(text), k)
         );
@@ -35,8 +35,8 @@ public class TextAnalyzer {
             countDigits(text),
             countWhitespaces(text),
             countSymbols(text),
-            countCharacterFrequency(text),
-            countWordFrequency(text)
+            sortCharacterFrequency(countCharacterFrequency(text)),
+            sortWordFrequency(countWordFrequency(text))
         );
     }
 
@@ -133,5 +133,31 @@ public class TextAnalyzer {
             type == Character.CURRENCY_SYMBOL || 
             type == Character.MODIFIER_SYMBOL || 
             type == Character.OTHER_SYMBOL;
+    }
+
+    private Map<Character, Integer> sortCharacterFrequency(Map<Character, Integer> map) {
+        return map.entrySet().stream()
+            .sorted(
+                Comparator.comparing(Map.Entry<Character, Integer>::getValue)
+                    .reversed()
+                    .thenComparing(Map.Entry<Character, Integer>::getKey)
+            )
+            .collect(Collectors.toMap(
+                Map.Entry::getKey,
+                Map.Entry::getValue,
+                (a, b) -> a,
+                LinkedHashMap::new
+            ));
+    }
+
+    private Map<String, Integer> sortWordFrequency(Map<String, Integer> map) {
+        return map.entrySet().stream()
+            .sorted(Map.Entry.comparingByKey())
+            .collect(Collectors.toMap(
+                Map.Entry::getKey,
+                Map.Entry::getValue,
+                (a, b) -> a,
+                LinkedHashMap::new
+            ));
     }
 }

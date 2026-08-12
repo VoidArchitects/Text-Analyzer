@@ -16,6 +16,10 @@ if ($LASTEXITCODE -ne 0) {
     exit 1
 }
 
-Write-Host "Running Text Analyzer..." -ForegroundColor Green
+Write-Host "Running Text Analyzer on all test files..." -ForegroundColor Green
 
-java -cp out app.Main test-files/sample.txt --top 5 --ignore-case
+$testFiles = Get-ChildItem -Path test-files -Filter *.txt |
+    ForEach-Object { $_.FullName }
+
+# java -cp out app.Main $testFiles --top 5 --ignore-case
+java -cp out app.Main test-files/large.txt --top 5 --ignore-case

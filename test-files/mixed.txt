@@ -1,0 +1,17 @@
+# Text Analyzer CLI Test Data (v1.0.0)
+
+Welcome to the ultimate test file! 🚀 This document combines multiple scenarios:
+1. Normal English sentences.
+2. NUMBERS like 42, 3.14, and $1,000.00.
+3. PUNCTUATION: "Hello, World!" (Are you ready?) -- Yes!
+4. Case variations: test, Test, TEST, tEsT.
+5. Unicode: Café, Señor, 🤖, こんにちは.
+
+	Indented code snippet:
+	public class Main {
+	    public static void main(String[] args) {
+	        System.out.println("Line count: 25+");
+	    }
+	}
+
+End of mixed test content. 🎯

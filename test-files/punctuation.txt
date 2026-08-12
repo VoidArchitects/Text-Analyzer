@@ -1,0 +1,10 @@
+Hello, world! How are you doing today? "Is everything working fine?" - asked the developer.
+
+Punctuation test: commas, periods; semicolons: colons! Exclamation marks? Question marks...
+Parentheses (like these), brackets [and these], plus braces {and these}!
+Hyphenated-words, em-dashes -- and en-dashes – are also interesting.
+
+"Quote inside a quote: 'nested quote'."
+Special symbols: @ # $ % ^ & * ( ) _ + = ~ ` | \ < > / ? : ;
+!!!!!
+      ! ! !  11!!!

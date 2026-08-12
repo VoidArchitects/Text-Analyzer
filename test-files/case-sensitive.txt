@@ -1,0 +1,10 @@
+apple Apple APPLE ApPlE
+banana Banana BANANA
+orange Orange ORANGE
+
+text Text TEXT tExT
+analyzer Analyzer ANALYZER
+JAVA Java java
+
+The quick BROWN fox Jumps OVER the Lazy DOG.
+THE QUICK brown FOX jumps over THE LAZY dog.

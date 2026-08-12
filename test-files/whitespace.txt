@@ -1,0 +1,17 @@
+Leading space on this line.
+   Three leading spaces here.
+		Two leading tabs here.
+
+Line with trailing spaces    
+Line with trailing tab	
+
+
+Multiple    spaces    between    words.
+Tab	separated	words	here.
+
+
+Consecutive blank lines above and below.
+
+
+
+End of whitespace test file.   

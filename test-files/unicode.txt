@@ -1,0 +1,14 @@
+Accented characters: Café, résumé, Über, Señor, façade, niño, Łódź.
+Emojis: 🚀 🌸 🤖 💻 📚 ✨ 🔥 🎯
+
+Non-Latin languages:
+Japanese: こんにちは世界 (Hello World)
+Spanish: ¡Hola, Mundo!
+French: Bonjour le monde
+German: Hallo Welt, Tschüß!
+Russian: Привет, мир!
+Greek: Γειά σου Κόσμε
+Chinese: 你好，世界！
+Arabic: مرحبا بالعالم
+
+Mathematical symbols: ∑ ∏ √ ∫ ∞ ≈ ≠ ≤ ≥

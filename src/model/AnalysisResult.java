@@ -34,8 +34,10 @@ public class AnalysisResult {
         this.digitCount = digitCount;
         this.whiteSpaceCount = whiteSpaceCount;
         this.symbolCount = symbolCount;
-        this.characterFrequency = Map.copyOf(characterFrequency);
-        this.wordFrequency = Map.copyOf(wordFrequency);
+        this.characterFrequency =
+            Collections.unmodifiableMap(new LinkedHashMap<>(characterFrequency));
+        this.wordFrequency =
+            Collections.unmodifiableMap(new LinkedHashMap<>(wordFrequency));
         this.topKCharacterFrequency =
             Collections.unmodifiableMap(new LinkedHashMap<>(topKCharacterFrequency));
         this.topKWordFrequency =
@@ -58,8 +60,10 @@ public class AnalysisResult {
         this.digitCount = digitCount;
         this.whiteSpaceCount = whiteSpaceCount;
         this.symbolCount = symbolCount;
-        this.characterFrequency = Map.copyOf(characterFrequency);
-        this.wordFrequency = Map.copyOf(wordFrequency);
+        this.characterFrequency =
+            Collections.unmodifiableMap(new LinkedHashMap<>(characterFrequency));
+        this.wordFrequency =
+            Collections.unmodifiableMap(new LinkedHashMap<>(wordFrequency));
     }
     //=====================GETTERS===================
     public int getCharacterCount() {
@@ -90,7 +94,7 @@ public class AnalysisResult {
     }
 
     public Map<Character, Integer> getCharacterFrequency() {
-        return Map.copyOf(characterFrequency);
+        return (characterFrequency);
     }
 
     public Map<Character, Integer> getTopKCharacterFrequency() {
@@ -98,7 +102,7 @@ public class AnalysisResult {
     }
     
     public Map<String, Integer> getWordsFrequency() {
-        return Map.copyOf(wordFrequency);
+        return (wordFrequency);
     }
 
     public Map<String, Integer> getTopKWordsFrequency() {
@@ -146,4 +150,6 @@ public class AnalysisResult {
     public void setTopKWordFrequency(Map<String, Integer> topKWordFrequency) {
         this.topKWordFrequency = topKWordFrequency;
     }
+
+    
 }   
